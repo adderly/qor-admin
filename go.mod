@@ -1,4 +1,4 @@
-module github.com/qor/admin
+module github.com/LuD1161/qor-admin
 
 go 1.13
 
