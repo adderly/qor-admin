@@ -13,9 +13,9 @@ import (
 	"strings"
 	"testing"
 
-	. "github.com/qor/admin/tests/dummy"
-	"github.com/qor/qor"
-	"github.com/qor/qor/resource"
+	"github.com/adderly/qor"
+	. "github.com/adderly/qor-admin/tests/dummy"
+	"github.com/adderly/qor/resource"
 	qorTestUtils "github.com/qor/qor/test/utils"
 )
 

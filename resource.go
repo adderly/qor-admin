@@ -8,11 +8,11 @@ import (
 	"reflect"
 	"strings"
 
+	"github.com/adderly/qor"
+	"github.com/adderly/qor/resource"
+	"github.com/adderly/qor/utils"
+	"github.com/adderly/roles"
 	"github.com/jinzhu/inflection"
-	"github.com/qor/qor"
-	"github.com/qor/qor/resource"
-	"github.com/qor/qor/utils"
-	"github.com/qor/roles"
 	"gorm.io/gorm"
 )
 
@@ -331,10 +331,11 @@ func (res *Resource) getAttrs(attrs []string) []string {
 }
 
 // IndexAttrs set attributes will be shown in the index page
-//     // show given attributes in the index page
-//     order.IndexAttrs("User", "PaymentAmount", "ShippedAt", "CancelledAt", "State", "ShippingAddress")
-//     // show all attributes except `State` in the index page
-//     order.IndexAttrs("-State")
+//
+//	// show given attributes in the index page
+//	order.IndexAttrs("User", "PaymentAmount", "ShippedAt", "CancelledAt", "State", "ShippingAddress")
+//	// show all attributes except `State` in the index page
+//	order.IndexAttrs("-State")
 func (res *Resource) IndexAttrs(values ...interface{}) []*Section {
 	overriddingIndexAttrs := res.sections.OverriddingIndexAttrs
 	res.sections.OverriddingIndexAttrs = true
@@ -367,26 +368,27 @@ func (res *Resource) OverrideIndexAttrs(fc func()) {
 }
 
 // NewAttrs set attributes will be shown in the new page
-//     // show given attributes in the new page
-//     order.NewAttrs("User", "PaymentAmount", "ShippedAt", "CancelledAt", "State", "ShippingAddress")
-//     // show all attributes except `State` in the new page
-//     order.NewAttrs("-State")
-//  You could also use `Section` to structure form to make it tidy and clean
-//     product.NewAttrs(
-//       &admin.Section{
-//       	Title: "Basic Information",
-//       	Rows: [][]string{
-//       		{"Name"},
-//       		{"Code", "Price"},
-//       	}},
-//       &admin.Section{
-//       	Title: "Organization",
-//       	Rows: [][]string{
-//       		{"Category", "Collections", "MadeCountry"},
-//       	}},
-//       "Description",
-//       "ColorVariations",
-//     }
+//
+//	   // show given attributes in the new page
+//	   order.NewAttrs("User", "PaymentAmount", "ShippedAt", "CancelledAt", "State", "ShippingAddress")
+//	   // show all attributes except `State` in the new page
+//	   order.NewAttrs("-State")
+//	You could also use `Section` to structure form to make it tidy and clean
+//	   product.NewAttrs(
+//	     &admin.Section{
+//	     	Title: "Basic Information",
+//	     	Rows: [][]string{
+//	     		{"Name"},
+//	     		{"Code", "Price"},
+//	     	}},
+//	     &admin.Section{
+//	     	Title: "Organization",
+//	     	Rows: [][]string{
+//	     		{"Category", "Collections", "MadeCountry"},
+//	     	}},
+//	     "Description",
+//	     "ColorVariations",
+//	   }
 func (res *Resource) NewAttrs(values ...interface{}) []*Section {
 	overriddingNewAttrs := res.sections.OverriddingNewAttrs
 	res.sections.OverriddingNewAttrs = true
@@ -418,26 +420,27 @@ func (res *Resource) OverrideNewAttrs(fc func()) {
 }
 
 // EditAttrs set attributes will be shown in the edit page
-//     // show given attributes in the new page
-//     order.EditAttrs("User", "PaymentAmount", "ShippedAt", "CancelledAt", "State", "ShippingAddress")
-//     // show all attributes except `State` in the edit page
-//     order.EditAttrs("-State")
-//  You could also use `Section` to structure form to make it tidy and clean
-//     product.EditAttrs(
-//       &admin.Section{
-//       	Title: "Basic Information",
-//       	Rows: [][]string{
-//       		{"Name"},
-//       		{"Code", "Price"},
-//       	}},
-//       &admin.Section{
-//       	Title: "Organization",
-//       	Rows: [][]string{
-//       		{"Category", "Collections", "MadeCountry"},
-//       	}},
-//       "Description",
-//       "ColorVariations",
-//     }
+//
+//	   // show given attributes in the new page
+//	   order.EditAttrs("User", "PaymentAmount", "ShippedAt", "CancelledAt", "State", "ShippingAddress")
+//	   // show all attributes except `State` in the edit page
+//	   order.EditAttrs("-State")
+//	You could also use `Section` to structure form to make it tidy and clean
+//	   product.EditAttrs(
+//	     &admin.Section{
+//	     	Title: "Basic Information",
+//	     	Rows: [][]string{
+//	     		{"Name"},
+//	     		{"Code", "Price"},
+//	     	}},
+//	     &admin.Section{
+//	     	Title: "Organization",
+//	     	Rows: [][]string{
+//	     		{"Category", "Collections", "MadeCountry"},
+//	     	}},
+//	     "Description",
+//	     "ColorVariations",
+//	   }
 func (res *Resource) EditAttrs(values ...interface{}) []*Section {
 	overriddingEditAttrs := res.sections.OverriddingEditAttrs
 	res.sections.OverriddingEditAttrs = true
@@ -469,26 +472,27 @@ func (res *Resource) OverrideEditAttrs(fc func()) {
 }
 
 // ShowAttrs set attributes will be shown in the show page
-//     // show given attributes in the show page
-//     order.ShowAttrs("User", "PaymentAmount", "ShippedAt", "CancelledAt", "State", "ShippingAddress")
-//     // show all attributes except `State` in the show page
-//     order.ShowAttrs("-State")
-//  You could also use `Section` to structure form to make it tidy and clean
-//     product.ShowAttrs(
-//       &admin.Section{
-//       	Title: "Basic Information",
-//       	Rows: [][]string{
-//       		{"Name"},
-//       		{"Code", "Price"},
-//       	}},
-//       &admin.Section{
-//       	Title: "Organization",
-//       	Rows: [][]string{
-//       		{"Category", "Collections", "MadeCountry"},
-//       	}},
-//       "Description",
-//       "ColorVariations",
-//     }
+//
+//	   // show given attributes in the show page
+//	   order.ShowAttrs("User", "PaymentAmount", "ShippedAt", "CancelledAt", "State", "ShippingAddress")
+//	   // show all attributes except `State` in the show page
+//	   order.ShowAttrs("-State")
+//	You could also use `Section` to structure form to make it tidy and clean
+//	   product.ShowAttrs(
+//	     &admin.Section{
+//	     	Title: "Basic Information",
+//	     	Rows: [][]string{
+//	     		{"Name"},
+//	     		{"Code", "Price"},
+//	     	}},
+//	     &admin.Section{
+//	     	Title: "Organization",
+//	     	Rows: [][]string{
+//	     		{"Category", "Collections", "MadeCountry"},
+//	     	}},
+//	     "Description",
+//	     "ColorVariations",
+//	   }
 func (res *Resource) ShowAttrs(values ...interface{}) []*Section {
 	overriddingShowAttrs := res.sections.OverriddingShowAttrs
 	settingShowAttrs := true
@@ -550,8 +554,9 @@ func (res *Resource) SortableAttrs(columns ...string) []string {
 }
 
 // SearchAttrs set searchable attributes, e.g:
-//	   product.SearchAttrs("Name", "Code", "Category.Name", "Brand.Name")
-//     // Search products with its name, code, category's name, brand's name
+//
+//		   product.SearchAttrs("Name", "Code", "Category.Name", "Brand.Name")
+//	    // Search products with its name, code, category's name, brand's name
 func (res *Resource) SearchAttrs(columns ...string) []string {
 	if len(columns) != 0 || res.SearchHandler == nil {
 		if len(columns) == 0 {

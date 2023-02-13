@@ -4,25 +4,26 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/qor/qor/utils"
+	"github.com/adderly/qor/utils"
 )
 
 // Section is used to structure forms, it could group your fields into sections, to make your form clean & tidy
-//    product.EditAttrs(
-//      &admin.Section{
-//      	Title: "Basic Information",
-//      	Rows: [][]string{
-//      		{"Name"},
-//      		{"Code", "Price"},
-//      	}},
-//      &admin.Section{
-//      	Title: "Organization",
-//      	Rows: [][]string{
-//      		{"Category", "Collections", "MadeCountry"},
-//      	}},
-//      "Description",
-//      "ColorVariations",
-//    }
+//
+//	product.EditAttrs(
+//	  &admin.Section{
+//	  	Title: "Basic Information",
+//	  	Rows: [][]string{
+//	  		{"Name"},
+//	  		{"Code", "Price"},
+//	  	}},
+//	  &admin.Section{
+//	  	Title: "Organization",
+//	  	Rows: [][]string{
+//	  		{"Category", "Collections", "MadeCountry"},
+//	  	}},
+//	  "Description",
+//	  "ColorVariations",
+//	}
 type Section struct {
 	Resource *Resource
 	Title    string

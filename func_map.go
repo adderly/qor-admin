@@ -17,11 +17,11 @@ import (
 	"sort"
 	"strings"
 
+	"github.com/adderly/qor"
+	"github.com/adderly/qor/resource"
+	"github.com/adderly/qor/utils"
+	"github.com/adderly/roles"
 	"github.com/jinzhu/inflection"
-	"github.com/qor/qor"
-	"github.com/qor/qor/resource"
-	"github.com/qor/qor/utils"
-	"github.com/qor/roles"
 	"github.com/qor/session"
 )
 
@@ -203,9 +203,10 @@ func (context *Context) NewResourceContext(name ...interface{}) *Context {
 }
 
 // URLFor generate url for resource value
-//     context.URLFor(&Product{})
-//     context.URLFor(&Product{ID: 111})
-//     context.URLFor(productResource)
+//
+//	context.URLFor(&Product{})
+//	context.URLFor(&Product{ID: 111})
+//	context.URLFor(productResource)
 func (context *Context) URLFor(value interface{}, resources ...*Resource) string {
 	getPrefix := func(res *Resource) string {
 		var params string

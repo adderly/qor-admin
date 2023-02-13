@@ -4,10 +4,10 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/qor/admin"
+	"github.com/adderly/qor"
+	admin "github.com/adderly/qor-admin"
+	"github.com/adderly/roles"
 	. "github.com/qor/admin/tests/dummy"
-	"github.com/qor/qor"
-	"github.com/qor/roles"
 )
 
 // Template helpers test

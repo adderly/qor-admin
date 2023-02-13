@@ -5,8 +5,8 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/adderly/qor"
 	"github.com/fatih/color"
-	"github.com/qor/qor"
 )
 
 type Product struct {

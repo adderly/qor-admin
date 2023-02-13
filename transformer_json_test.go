@@ -6,9 +6,9 @@ import (
 	"errors"
 	"testing"
 
+	admin "github.com/adderly/qor-admin"
+	. "github.com/adderly/qor-admin/tests/dummy"
 	"github.com/jinzhu/now"
-	"github.com/qor/admin"
-	. "github.com/qor/admin/tests/dummy"
 	qorTestUtils "github.com/qor/qor/test/utils"
 	"github.com/theplant/testingutils"
 	"gorm.io/gorm"

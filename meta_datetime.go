@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/qor/qor"
-	"github.com/qor/qor/resource"
-	"github.com/qor/qor/utils"
+	"github.com/adderly/qor"
+	"github.com/adderly/qor/resource"
+	"github.com/adderly/qor/utils"
 	"gorm.io/gorm"
 )
 

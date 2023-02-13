@@ -3,8 +3,8 @@ package admin
 import (
 	"strings"
 
-	"github.com/qor/qor"
-	"github.com/qor/roles"
+	"github.com/adderly/qor"
+	"github.com/adderly/roles"
 )
 
 // RouteConfig config for admin routes

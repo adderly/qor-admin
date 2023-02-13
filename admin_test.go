@@ -3,7 +3,7 @@ package admin
 import (
 	"testing"
 
-	"github.com/qor/qor"
+	"github.com/adderly/qor"
 	"github.com/qor/qor/test/utils"
 )
 

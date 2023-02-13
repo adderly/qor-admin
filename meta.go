@@ -7,10 +7,10 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/qor/qor"
-	"github.com/qor/qor/resource"
-	"github.com/qor/qor/utils"
-	"github.com/qor/roles"
+	"github.com/adderly/qor"
+	"github.com/adderly/qor/resource"
+	"github.com/adderly/qor/utils"
+	"github.com/adderly/roles"
 	"gorm.io/gorm/schema"
 )
 

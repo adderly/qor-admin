@@ -6,8 +6,8 @@ import (
 	"os"
 	"testing"
 
-	"github.com/qor/admin"
-	. "github.com/qor/admin/tests/dummy"
+	admin "github.com/adderly/qor-admin"
+	. "github.com/adderly/qor-admin/tests/dummy"
 	"gorm.io/gorm"
 )
 

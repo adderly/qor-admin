@@ -7,9 +7,9 @@ import (
 	"reflect"
 	"strings"
 
+	"github.com/adderly/qor/utils"
+	"github.com/adderly/roles"
 	"github.com/jinzhu/inflection"
-	"github.com/qor/qor/utils"
-	"github.com/qor/roles"
 )
 
 // XMLTransformer xml transformer

@@ -11,20 +11,22 @@ import (
 	"strings"
 	"time"
 
-	"github.com/qor/qor"
-	"github.com/qor/qor/utils"
-	"github.com/qor/roles"
+	"github.com/adderly/qor"
+	"github.com/adderly/qor/utils"
+	"github.com/adderly/roles"
 )
 
 // Middleware is a way to filter a request and response coming into your application
-// Register new middleware with `admin.GetRouter().Use(Middleware{
-//   Name: "middleware name", // use middleware with same name will overwrite old one
-//   Handler: func(*Context, *Middleware) {
-//     // do something
-//     // run next middleware
-//     middleware.Next(context)
-//   },
-// })`
+//
+//	Register new middleware with `admin.GetRouter().Use(Middleware{
+//	  Name: "middleware name", // use middleware with same name will overwrite old one
+//	  Handler: func(*Context, *Middleware) {
+//	    // do something
+//	    // run next middleware
+//	    middleware.Next(context)
+//	  },
+//	})`
+//
 // It will be called in order, it need to be registered before `admin.MountTo`
 type Middleware struct {
 	Name    string
