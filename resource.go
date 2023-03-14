@@ -127,7 +127,7 @@ func (res *Resource) UseTheme(theme interface{}) []ThemeInterface {
 
 		// Config Admin Theme
 		for _, pth := range themeInterface.GetViewPaths() {
-			res.GetAdmin().RegisterViewPath(pth)
+			res.GetAdmin().RegisterViewPath(pth, false)
 		}
 		themeInterface.ConfigAdminTheme(res)
 	}

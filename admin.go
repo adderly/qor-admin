@@ -21,6 +21,7 @@ import (
 type AdminConfig struct {
 	// SiteName set site's name, the name will be used as admin HTML title and admin interface will auto load javascripts, stylesheets files based on its value
 	SiteName        string
+	Embedded        bool
 	DB              *gorm.DB
 	Auth            Auth
 	AssetFS         assetfs.Interface
@@ -73,7 +74,7 @@ func New(config interface{}) *Admin {
 		admin.SettingsStorage = newSettings(admin.AdminConfig.DB)
 	}
 
-	admin.SetAssetFS(admin.AssetFS)
+	admin.SetAssetFS(admin.AssetFS, admin.Embedded)
 
 	if admin.AdminConfig.DB != nil {
 		admin.AdminConfig.DB.AutoMigrate(&QorAdminSetting{})
@@ -95,22 +96,24 @@ func (admin *Admin) SetAuth(auth Auth) {
 }
 
 // SetAssetFS set AssetFS for admin
-func (admin *Admin) SetAssetFS(assetFS assetfs.Interface) {
+func (admin *Admin) SetAssetFS(assetFS assetfs.Interface, embedded bool) {
 	admin.AssetFS = assetFS
 	globalAssetFSes = append(globalAssetFSes, assetFS)
 
 	admin.AssetFS.RegisterPath(filepath.Join(utils.AppRoot, "app/views/qor"))
-	admin.RegisterViewPath("./views/qor")
+	admin.RegisterViewPath("./views/qor", embedded)
 
 	for _, viewPath := range globalViewPaths {
-		admin.RegisterViewPath(viewPath)
+		admin.RegisterViewPath(viewPath, false)
 	}
 }
 
 // RegisterViewPath register view path for admin
-func (admin *Admin) RegisterViewPath(pth string) {
+func (admin *Admin) RegisterViewPath(pth string, embedded bool) {
 	var err error
-	if err = admin.AssetFS.RegisterPath(filepath.Join(utils.AppRoot, "vendor", pth)); err != nil {
+
+	if err = admin.AssetFS.RegisterPath(filepath.Join(utils.AppRoot, pth)); err == nil {
+	} else if err = admin.AssetFS.RegisterPath(filepath.Join(utils.AppRoot, "vendor", pth)); err != nil {
 		for _, gopath := range utils.GOPATH() {
 			if err = admin.AssetFS.RegisterPath(filepath.Join(gopath, getDepVersionFromMod(pth))); err == nil {
 				break
@@ -121,6 +124,7 @@ func (admin *Admin) RegisterViewPath(pth string) {
 			}
 		}
 	}
+
 	if err != nil {
 		log.Printf("RegisterViewPathError: %s %s!", pth, err.Error())
 	}
